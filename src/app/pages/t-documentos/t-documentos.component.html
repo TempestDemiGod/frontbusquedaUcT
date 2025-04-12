@@ -1,0 +1,70 @@
+<div class="relative overflow-x-auto w-11/12 mx-auto rounded-lg mt-4">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    n_Documento
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    nombre_documento
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    tipo
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    fecha
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    accion
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let document of documents" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{document.n_Documento}}
+                </th>
+                <td class="px-6 py-4">
+                    {{document.name_Documento}}
+                </td>
+                <td class="px-6 py-4">
+                    {{document.type_Document}}
+                </td>
+                <td class="px-6 py-4">
+                    {{document.fecha_Documento}}
+                </td>
+                <td class="px-6 py-4 flex gap-6">
+                    <button type="button" class="bg-gray-600 px-4 py-2 rounded-sm hover:bg-gray-400 hover:text-gray-700 transition-all ">
+                        ver
+                    </button>
+                    <button (click)="deleteDocument(document._id)" type="button" class="bg-gray-600 px-4 py-2 rounded-sm hover:bg-gray-400 hover:text-gray-700 transition-all ">
+                        delete
+                    </button>
+                    <button type="button" class="bg-gray-600 px-4 py-2 rounded-sm hover:bg-gray-400 hover:text-gray-700 transition-all ">
+                        edit
+                    </button>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+
+
+<div class="flex flex-col items-center my-5">
+    <!-- Help text -->
+    <span class="text-sm text-gray-700 dark:text-gray-400">
+        pagina <span class="font-semibold text-gray-900 ">{{infoPage?.page}}</span> de <span class="font-semibold text-gray-900">{{infoPage?.totalPage}}</span> 
+    </span>
+    <!-- Buttons -->
+    <div class="inline-flex mt-2 xs:mt-0">
+        <button (click)="prevPage()" [disabled]="!infoPage?.hasPrevPag" [ngClass]="{'bg-gray-800 rounded-s hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white':infoPage?.hasPrevPag , 'bg-gray-400 rounded-s':!infoPage?.hasPrevPag  }"  class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white ">
+            Prev
+        </button>
+        <button (click)="nextPage()" [disabled]="!infoPage?.hasNextPage" [ngClass]="{'bg-gray-800 border-0 border-s border-gray-700 rounded-e hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white':infoPage?.hasNextPage , 'bg-gray-400 border-0 border-s rounded-e':!infoPage?.hasNextPage  }" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white ">
+            Next
+        </button>
+    </div>
+  </div>
+ 
+  

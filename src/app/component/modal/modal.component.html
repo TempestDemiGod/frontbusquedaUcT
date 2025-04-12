@@ -1,0 +1,92 @@
+<div class="absolute bg-gray-700/45 w-full h-full" (click)="closemodal()" >
+</div>
+
+<div class="relative z-20 w-4/12 min-h-[calc(80vh)] rounded-lg bg-gray-600 pb-6">
+    <form *ngIf="typeModal == 'create'" class="flex flex-col justify-center items-center" (submit)="crearDocumento()"  [formGroup]="formCreate">
+        <div class="w-10/12 mx-auto py-4">
+            <label >nombre del documento </label>
+            <input type="text" formControlName="name_Documento" name="name_Documento" id="name_Documento" class=" border  sm:text-sm rounded-lg mt-2 focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-400 border-gray-600 placeholder-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="contrato de tempest">
+            <div *ngIf="formCreate.controls.name_Documento.invalid && formCreate.controls.name_Documento.touched && formCreate.controls.name_Documento.errors">
+                <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="formCreate.controls.name_Documento.errors['required']">
+                    name_Documento es requerido
+                </div>
+            </div>
+        </div>
+
+     
+            <div class="w-10/12 mx-auto py-4">
+                <label>numero del documento</label>
+                <input  type="text" formControlName="n_Documento" name="name_Documento" id="name_Documento" class=" border  sm:text-sm rounded-lg my-2 focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-200 border-gray-600 placeholder-gray-600 text-gray-600 focus:ring-blue-500 focus:border-blue-500" placeholder="tempest-001">
+                <div *ngIf="formCreate.controls.n_Documento.invalid && formCreate.controls.n_Documento.touched && formCreate.controls.n_Documento.errors">
+                    <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="formCreate.controls.n_Documento.errors['required']">
+                        n_Documento es requerido
+                    </div>
+                </div>
+            </div>
+            <div class="w-10/12 mx-auto py-4">
+                <label>fecha del documento</label>
+                <input class="w-full py-2 px-2 rounded-lg my-2 " type="date" formControlName="fecha_Documento" >
+                <div *ngIf="formCreate.controls.fecha_Documento.invalid && formCreate.controls.fecha_Documento.touched && formCreate.controls.fecha_Documento.errors">
+                    <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="formCreate.controls.fecha_Documento.errors['required']">
+                        fecha_Documento es requerido
+                    </div>
+                </div>
+            </div>
+            <div class="w-10/12 mx-auto py-4">
+                <label>tipo de documento</label>
+                <input type="text" formControlName="type_Document" name="name_Documento" id="name_Documento" class=" border  sm:text-sm rounded-lg mt-2 focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-200 border-gray-600 placeholder-gray-600 text-gray-600 focus:ring-blue-500 focus:border-blue-500" placeholder="factura">
+                <div *ngIf="formCreate.controls.type_Document.invalid && formCreate.controls.type_Document.touched && formCreate.controls.type_Document.errors">
+                    <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="formCreate.controls.type_Document.errors['required']">
+                        type_Document es requerido
+                    </div>
+                </div>
+            </div>
+            
+      
+        <button [disabled]="!formCreate.valid" [ngClass]="{'bg-gray-600':formCreate.valid, 'hover:bg-gray-700':formCreate.valid ,'bg-gray-400':!formCreate.valid  }" type="submit" class="w-10/12  text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 focus:ring-primary-800  ">crear</button>
+    </form>
+    <form *ngIf="typeModal == 'edit'" class="flex flex-col justify-center items-center" (submit)="editDocumento()"  [formGroup]="formCreate">
+        <div class="w-10/12 mx-auto py-4">
+            <label >nombre del documento </label>
+            <input type="text" formControlName="name_Documento" name="name_Documento" id="name_Documento" class=" border  sm:text-sm rounded-lg mt-2 focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-400 border-gray-600 placeholder-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="contrato de tempest">
+            <div *ngIf="formCreate.controls.name_Documento.invalid && formCreate.controls.name_Documento.touched && formCreate.controls.name_Documento.errors">
+                <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="formCreate.controls.name_Documento.errors['required']">
+                    name_Documento es requerido
+                </div>
+            </div>
+        </div>
+
+     
+            <div class="w-10/12 mx-auto py-4">
+                <label>numero del documento</label>
+                <input  type="text" formControlName="n_Documento" name="name_Documento" id="name_Documento" class=" border  sm:text-sm rounded-lg my-2 focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-200 border-gray-600 placeholder-gray-600 text-gray-600 focus:ring-blue-500 focus:border-blue-500" placeholder="tempest-001">
+                <div *ngIf="formCreate.controls.n_Documento.invalid && formCreate.controls.n_Documento.touched && formCreate.controls.n_Documento.errors">
+                    <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="formCreate.controls.n_Documento.errors['required']">
+                        n_Documento es requerido
+                    </div>
+                </div>
+            </div>
+            <div class="w-10/12 mx-auto py-4">
+                <label>fecha del documento</label>
+                <input class="w-full py-2 px-2 rounded-lg my-2 " type="date" formControlName="fecha_Documento" >
+                <div *ngIf="formCreate.controls.fecha_Documento.invalid && formCreate.controls.fecha_Documento.touched && formCreate.controls.fecha_Documento.errors">
+                    <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="formCreate.controls.fecha_Documento.errors['required']">
+                        fecha_Documento es requerido
+                    </div>
+                </div>
+            </div>
+            <div class="w-10/12 mx-auto py-4">
+                <label>tipo de documento</label>
+                <input type="text" formControlName="type_Document" name="name_Documento" id="name_Documento" class=" border  sm:text-sm rounded-lg mt-2 focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-200 border-gray-600 placeholder-gray-600 text-gray-600 focus:ring-blue-500 focus:border-blue-500" placeholder="factura">
+                <div *ngIf="formCreate.controls.type_Document.invalid && formCreate.controls.type_Document.touched && formCreate.controls.type_Document.errors">
+                    <div class="bg-red-400 rounded-md my-1 p-2 text-white" *ngIf="formCreate.controls.type_Document.errors['required']">
+                        type_Document es requerido
+                    </div>
+                </div>
+            </div>
+            
+      
+        <button [disabled]="!formCreate.valid" [ngClass]="{'bg-gray-600':formCreate.valid, 'hover:bg-gray-700':formCreate.valid ,'bg-gray-400':!formCreate.valid  }" type="submit" class="w-10/12  text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 focus:ring-primary-800  ">editar</button>
+    </form>
+    <button (click)="closemodal()" type="button" class="w-10/12  text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 focus:ring-primary-800 mx-10 my-4  ">close</button>
+</div>
