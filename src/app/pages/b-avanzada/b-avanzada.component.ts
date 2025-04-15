@@ -53,6 +53,9 @@ export class BAvanzadaComponent implements OnInit {
     this.page++
     this.alldatos()
   }
+  abrirDocumento(link:string): void {
+    window.open(link, '_blank');
+  }
   prevPage(){
     this.page--
     this.alldatos()

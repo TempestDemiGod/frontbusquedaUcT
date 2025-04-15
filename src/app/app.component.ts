@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
@@ -6,11 +6,11 @@ import { Location } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit , OnChanges{
   title = 'frontUctDig';
   constructor(private location: Location) {}
   opCarpeta?: boolean
-  modal = false
+  @Input() modal = false
   typeModal = 'create'
   opAvanzada?: boolean
   opAllDocuments?: boolean
@@ -39,10 +39,16 @@ export class AppComponent implements OnInit{
   }
   closemodal(estado : boolean){
     this.modal = estado
+    window.location.reload()
   }
   editarDocument(id: any){
     
   }
+  ngOnChanges(changes: SimpleChanges){
+    
+    // window.location.reload();
+  }
+
   ngOnInit(){
     const currentPath = this.location.path(); // da "/bAvanzada" o "/"
   if (currentPath.startsWith('/bAvanzada')){

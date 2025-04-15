@@ -34,14 +34,21 @@
                     {{document.fecha_Documento}}
                 </td>
                 <td class="px-6 py-4 flex gap-6">
-                    <button type="button" class="bg-gray-600 px-4 py-2 rounded-sm hover:bg-gray-400 hover:text-gray-700 transition-all ">
-                        ver
-                    </button>
+                    
                     <button (click)="deleteDocument(document._id)" type="button" class="bg-gray-600 px-4 py-2 rounded-sm hover:bg-gray-400 hover:text-gray-700 transition-all ">
                         delete
                     </button>
-                    <button type="button" class="bg-gray-600 px-4 py-2 rounded-sm hover:bg-gray-400 hover:text-gray-700 transition-all ">
+                    <!-- <button type="button" class="bg-gray-600 px-4 py-2 rounded-sm hover:bg-gray-400 hover:text-gray-700 transition-all ">
                         edit
+                    </button> -->
+                    <button (click)="abrirDocumento(document.linkPublic
+)" type="button" class="bg-gray-600 px-4 py-2 rounded-sm hover:bg-gray-400 hover:text-gray-700 transition-all ">
+                        ver
+                    </button>
+                    <button (click)="abrirDocumento(document.downloadLink
+
+)" type="button" class="bg-gray-600 px-4 py-2 rounded-sm hover:bg-gray-400 hover:text-gray-700 transition-all ">
+                        descargar
                     </button>
                 </td>
             </tr>

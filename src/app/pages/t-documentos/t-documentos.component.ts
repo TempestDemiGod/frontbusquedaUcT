@@ -22,7 +22,9 @@ export class TDocumentosComponent implements OnInit {
     await axios.delete(`/document/${id}`)
     this.alldatos()
   }
-
+  abrirDocumento(link:string): void {
+    window.open(link, '_blank');
+  }
   nextPage(){
     this.page++
     this.alldatos()

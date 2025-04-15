@@ -1,1 +1,96 @@
-<p>b-carpetas works!</p>
+<div class=" w-full flex">
+    <div class="w-3/12 min-h-[calc(100vh-3.5rem-10rem)] h-full bg-white border-black border-e-2">
+        <form class="flex flex-col justify-center items-center" (submit)="enviarDatos()" >
+            <div class="w-10/12 mx-auto py-4">
+                <label >nombre de carpeta </label>
+                
+                <input [(ngModel)]="folder" type="text" name="name_Documento" id="name_Documento" class=" border  sm:text-sm rounded-lg mt-2 focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-400 border-gray-600 placeholder-gray-600 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="contrato de tempest">
+                
+            </div>
+
+            <button type="submit" class="w-10/12  hover:bg-gray-700 text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 bg-gray-600 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 focus:ring-primary-800  ">buscar</button>
+        </form>
+    </div>
+    <div class="w-9/12 h-full  ">
+        
+
+<div class="relative overflow-x-auto w-11/12 mx-auto rounded-lg mt-4">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    n_Documento
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    nombre_documento
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    tipo
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    fecha
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    accion
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let document of documents" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{document.n_Documento}}
+                </th>
+                <td class="px-6 py-4">
+                    {{document.name_Documento}}
+                </td>
+                <td class="px-6 py-4">
+                    {{document.type_Document}}
+                </td>
+                <td class="px-6 py-4">
+                    {{document.fecha_Documento}}
+                </td>
+                <td class="px-6 py-4 flex gap-6">
+                    
+                    <button type="button" class="bg-gray-600 px-4 py-2 rounded-sm hover:bg-gray-400 hover:text-gray-700 transition-all ">
+                        delete
+                    </button>
+                    <!-- <button (click)="document._id" type="button" class="bg-gray-600 px-4 py-2 rounded-sm hover:bg-gray-400 hover:text-gray-700 transition-all ">
+                        edit
+                    </button> -->
+                    <button (click)="abrirDocumento(document.linkPublic
+)" type="button" class="bg-gray-600 px-4 py-2 rounded-sm hover:bg-gray-400 hover:text-gray-700 transition-all ">
+                        ver
+                    </button>
+                    <button (click)="abrirDocumento(document.downloadLink
+
+)" type="button" class="bg-gray-600 px-4 py-2 rounded-sm hover:bg-gray-400 hover:text-gray-700 transition-all ">
+                        descargar
+                    </button>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+
+
+<div class="flex flex-col items-center my-5">
+    <!-- Help text -->
+    <span class="text-sm text-gray-700 dark:text-gray-400">
+        pagina <span class="font-semibold text-gray-900 ">{{infoPage?.page}}</span> de <span class="font-semibold text-gray-900">{{infoPage?.totalPage}}</span> 
+    </span>
+    <!-- Buttons -->
+    <div class="inline-flex mt-2 xs:mt-0">
+        <button (click)="prevPage()" [disabled]="!infoPage?.hasPrevPag" [ngClass]="{'bg-gray-800 rounded-s hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white':infoPage?.hasPrevPag , 'bg-gray-400 rounded-s':!infoPage?.hasPrevPag  }"  class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white ">
+            Prev
+        </button>
+        <button (click)="nextPage()" [disabled]="!infoPage?.hasNextPage" [ngClass]="{'bg-gray-800 border-0 border-s border-gray-700 rounded-e hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white':infoPage?.hasNextPage , 'bg-gray-400 border-0 border-s rounded-e':!infoPage?.hasNextPage  }" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-white ">
+            Next
+        </button>
+    </div>
+  </div>
+ 
+  
+
+    </div>
+</div>

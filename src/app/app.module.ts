@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BCarpetasComponent } from './pages/b-carpetas/b-carpetas.component';
 import { BAvanzadaComponent } from './pages/b-avanzada/b-avanzada.component';
 import { RouterLink } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TDocumentosComponent } from './pages/t-documentos/t-documentos.component';
 import { ModalComponent } from './component/modal/modal.component';
 
@@ -22,7 +22,8 @@ import { ModalComponent } from './component/modal/modal.component';
     BrowserModule,
     AppRoutingModule,
     RouterLink,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
