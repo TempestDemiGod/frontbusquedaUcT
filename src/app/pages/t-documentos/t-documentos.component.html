@@ -1,6 +1,6 @@
 <div class="relative overflow-x-auto w-11/12 mx-auto rounded-lg mt-4">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <table class="w-full text-sm rtl:text-right text-gray-500 text-center ">
+        <thead class="text-xs text-white uppercase bg-[#052A59]">
             <tr>
                 <th scope="col" class="px-6 py-3">
                     n_Documento
@@ -12,6 +12,9 @@
                     tipo
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    carpeta
+                </th>
+                <th scope="col" class="px-6 py-3">
                     fecha
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -20,8 +23,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let document of documents" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <tr *ngFor="let document of documents" class="bg-[#104993] border-b  border-gray-200 text-white">
+                <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap ">
                     {{document.n_Documento}}
                 </th>
                 <td class="px-6 py-4">
@@ -31,23 +34,26 @@
                     {{document.type_Document}}
                 </td>
                 <td class="px-6 py-4">
+                    {{document.folder_name}}
+                </td>
+                <td class="px-6 py-4">
                     {{document.fecha_Documento}}
                 </td>
                 <td class="px-6 py-4 flex gap-6">
                     
-                    <button (click)="deleteDocument(document._id)" type="button" class="bg-gray-600 px-4 py-2 rounded-sm hover:bg-gray-400 hover:text-gray-700 transition-all ">
+                    <button (click)="deleteDocument(document._id)" type="button" class="bg-red-400 px-4 py-2 rounded-sm hover:bg-red-600  transition-all ">
                         delete
                     </button>
                     <!-- <button type="button" class="bg-gray-600 px-4 py-2 rounded-sm hover:bg-gray-400 hover:text-gray-700 transition-all ">
                         edit
                     </button> -->
                     <button (click)="abrirDocumento(document.linkPublic
-)" type="button" class="bg-gray-600 px-4 py-2 rounded-sm hover:bg-gray-400 hover:text-gray-700 transition-all ">
+)" type="button" class="bg-sky-400 px-4 py-2 rounded-sm hover:bg-sky-600  transition-all ">
                         ver
                     </button>
                     <button (click)="abrirDocumento(document.downloadLink
 
-)" type="button" class="bg-gray-600 px-4 py-2 rounded-sm hover:bg-gray-400 hover:text-gray-700 transition-all ">
+)" type="button" class="bg-emerald-400 px-4 py-2 rounded-sm hover:bg-emerald-600  transition-all">
                         descargar
                     </button>
                 </td>
