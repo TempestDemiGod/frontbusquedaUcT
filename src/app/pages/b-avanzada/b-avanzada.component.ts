@@ -43,6 +43,10 @@ export class BAvanzadaComponent implements OnInit {
   this.documents = this.infoPage.docs
 
   }
+  async deleteDocument(id : string){
+    await axios.delete(`/document/${id}`)
+    this.alldatos()
+  }
   async alldatos(){
     
     this.infoPage = await (await axios.post(`/searchDocuments/${this.page}`)).data

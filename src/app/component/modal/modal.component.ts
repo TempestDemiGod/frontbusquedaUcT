@@ -8,6 +8,7 @@ import axios from '../../../utils/axios';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent {
+  loading = false
   @Input() typeModal: string = ''
   @Output() closeModal = new EventEmitter<boolean>()
   pdf: any
@@ -22,6 +23,8 @@ export class ModalComponent {
   })
   
   async crearDocumento(){
+    try {
+      this.loading = !this.loading
     const datos = new FormData()
     const valores = this.formCreate.value as any;
     for (const campo in valores) {
@@ -30,9 +33,17 @@ export class ModalComponent {
       }
     }
     datos.append('pdf', this.pdf)
-    const newDocument = await axios.post('/document', datos  )
+    const newDocument = await axios.post('/document', datos , {
+  withCredentials: true
+} )
     console.log(newDocument)
-    this.closemodal()
+    } catch (error) {
+      console.log(error)
+    } finally{
+this.closemodal()
+    this.loading = !this.loading
+    }
+    
   }
   editDocumento(){
 

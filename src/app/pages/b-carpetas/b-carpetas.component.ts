@@ -41,6 +41,10 @@ export class BCarpetasComponent implements OnInit {
   abrirDocumento(link:string): void {
     window.open(link, '_blank');
   }
+  async deleteDocument(id : string){
+    await axios.delete(`/document/${id}`)
+    this.alldatos()
+  }
   prevPage(){
     this.page--
     this.alldatos()
